@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://0si17mvdt464"]
 
-[ext_resource type="Texture2D" uid="uid://bf2xn8h0g7kri" path="res://assets/bg.png" id="1_qsbpn"]
+[ext_resource type="Texture2D" uid="uid://ceuk2kb8gexbp" path="res://assets/bg2.png" id="1_53loj"]
 [ext_resource type="Script" path="res://scripts/Bird.cs" id="1_v4kr7"]
 [ext_resource type="Texture2D" uid="uid://bd15e7084watt" path="res://assets/fireBird1.png" id="2_1gii3"]
 [ext_resource type="Texture2D" uid="uid://br7qwv7nuctgr" path="res://assets/ground.png" id="2_vsbdg"]
@@ -46,14 +46,14 @@ size = Vector2(480, 76)
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.5, 1)
-motion_mirroring = Vector2(900, 0)
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(985, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture_filter = 1
-position = Vector2(372, 400)
-scale = Vector2(1.04167, 1.04167)
-texture = ExtResource("1_qsbpn")
+position = Vector2(492.809, 432.208)
+scale = Vector2(1.23369, 1.23369)
+texture = ExtResource("1_53loj")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(1229, 0)
