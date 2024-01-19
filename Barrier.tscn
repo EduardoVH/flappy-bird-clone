@@ -1,16 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://kys51vpf3yus"]
+[gd_scene load_steps=6 format=3 uid="uid://kys51vpf3yus"]
 
-[ext_resource type="Script" path="res://scripts/Barrier.cs" id="1_6v72d"]
-[ext_resource type="Texture2D" uid="uid://br75omfujruff" path="res://assets/pipe.png" id="1_rfn3l"]
+[ext_resource type="Script" path="res://scripts/Barrier.cs" id="1_0oue8"]
+[ext_resource type="Texture2D" uid="uid://br75omfujruff" path="res://assets/pipe.png" id="2_q2yep"]
+[ext_resource type="Script" path="res://scripts/PointScore.cs" id="3_0kk0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bllgk"]
-size = Vector2(40, 363)
+size = Vector2(40, 561)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhrtl"]
-size = Vector2(30, 173)
+size = Vector2(3, 147)
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_6v72d")
+script = ExtResource("1_0oue8")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(40, -134)
+rotation = 3.14159
+
+[node name="NinePatchRect" type="NinePatchRect" parent="StaticBody2D2"]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 560.0
+texture = ExtResource("2_q2yep")
+region_rect = Rect2(0, 0, 78, 560)
+axis_stretch_vertical = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(20, 280.5)
+shape = SubResource("RectangleShape2D_bllgk")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 24)
@@ -18,33 +35,21 @@ position = Vector2(0, 24)
 [node name="NinePatchRect" type="NinePatchRect" parent="StaticBody2D"]
 texture_filter = 1
 offset_right = 40.0
-offset_bottom = 89.0
-texture = ExtResource("1_rfn3l")
+offset_bottom = 559.0
+texture = ExtResource("2_q2yep")
 region_rect = Rect2(0, 0, 78, 560)
 axis_stretch_vertical = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(20, 181.5)
-shape = SubResource("RectangleShape2D_bllgk")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(40, -160)
-rotation = 3.14159
-
-[node name="NinePatchRect" type="NinePatchRect" parent="StaticBody2D2"]
-texture_filter = 1
-offset_right = 40.0
-offset_bottom = 363.0
-texture = ExtResource("1_rfn3l")
-region_rect = Rect2(0, 0, 78, 560)
-axis_stretch_vertical = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(20, 181.5)
+position = Vector2(20, 282.5)
 shape = SubResource("RectangleShape2D_bllgk")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 4
+script = ExtResource("3_0kk0q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(24, -68.5)
+position = Vector2(10.5, -55.5)
 shape = SubResource("RectangleShape2D_qhrtl")
+
+[connection signal="body_exited" from="Area2D" to="Area2D" method="OnBodyExit"]

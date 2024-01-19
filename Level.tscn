@@ -1,13 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://0si17mvdt464"]
+[gd_scene load_steps=17 format=3 uid="uid://0si17mvdt464"]
 
+[ext_resource type="Script" path="res://scripts/GameManager.cs" id="1_2ow03"]
 [ext_resource type="Texture2D" uid="uid://ceuk2kb8gexbp" path="res://assets/bg2.png" id="1_53loj"]
 [ext_resource type="Script" path="res://scripts/Bird.cs" id="1_v4kr7"]
 [ext_resource type="Texture2D" uid="uid://bd15e7084watt" path="res://assets/fireBird1.png" id="2_1gii3"]
+[ext_resource type="PackedScene" uid="uid://kys51vpf3yus" path="res://Barrier.tscn" id="2_ntnfw"]
 [ext_resource type="Texture2D" uid="uid://br7qwv7nuctgr" path="res://assets/ground.png" id="2_vsbdg"]
 [ext_resource type="Script" path="res://scripts/Ground.cs" id="3_jfumu"]
 [ext_resource type="Texture2D" uid="uid://db10hw2d4c4qk" path="res://assets/fireBird2.png" id="3_sb0dt"]
 [ext_resource type="Texture2D" uid="uid://cc46itganiuce" path="res://assets/fireBirdDeath.png" id="4_flk75"]
 [ext_resource type="Texture2D" uid="uid://c8hn0dtrdn0ym" path="res://assets/fireBird3.png" id="4_wjprm"]
+[ext_resource type="AudioStream" uid="uid://dnpgtvq8uml1" path="res://sounds/sfx_wing.wav" id="6_fhdr6"]
+[ext_resource type="AudioStream" uid="uid://8fy1yumfnsst" path="res://sounds/sfx_point.wav" id="7_mm5qd"]
+[ext_resource type="AudioStream" uid="uid://c4esddn8etbrs" path="res://sounds/sfx_hit.wav" id="8_ctel8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q0mi6"]
 animations = [{
@@ -43,6 +48,16 @@ size = Vector2(480, 76)
 
 [node name="Level" type="Node2D"]
 
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("bird", "currentScene", "currentScoreLabel", "highScoreLabel")]
+script = ExtResource("1_2ow03")
+barrierScene = ExtResource("2_ntnfw")
+gapBetweenBarriers = 400.0
+spawnHeightRange = Vector2(200, 550)
+bird = NodePath("../Bird")
+currentScene = NodePath("..")
+currentScoreLabel = NodePath("../CanvasLayer/CurrentScore")
+highScoreLabel = NodePath("../CanvasLayer/HighScore")
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -66,7 +81,15 @@ texture = ExtResource("2_vsbdg")
 
 [node name="Bird" type="RigidBody2D" parent="."]
 position = Vector2(339, 400)
+collision_layer = 4
+collision_mask = 3
+lock_rotation = true
+max_contacts_reported = 2
+contact_monitor = true
 script = ExtResource("1_v4kr7")
+jumpSfx = ExtResource("6_fhdr6")
+scoreSfx = ExtResource("7_mm5qd")
+dieSfx = ExtResource("8_ctel8")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bird"]
@@ -80,7 +103,13 @@ speed_scale = 3.0
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_afhrm")
 
+[node name="JumpSounds" type="AudioStreamPlayer" parent="Bird"]
+
+[node name="OtherSounds" type="AudioStreamPlayer" parent="Bird"]
+
 [node name="Ground" type="CharacterBody2D" parent="." node_paths=PackedStringArray("bird")]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("3_jfumu")
 bird = NodePath("../Bird")
 
@@ -90,3 +119,36 @@ shape = SubResource("RectangleShape2D_i0ca6")
 
 [node name="Camera2D" type="Camera2D" parent="Ground"]
 position = Vector2(177, 400)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CurrentScoreLabel" type="RichTextLabel" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 6.0
+offset_right = 120.0
+offset_bottom = 24.0
+text = "Current Score:"
+
+[node name="CurrentScore" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 121.0
+offset_top = 1.0
+offset_right = 221.0
+offset_bottom = 26.0
+text = "0"
+
+[node name="HighScoreLabel" type="RichTextLabel" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 321.0
+offset_top = 1.0
+offset_right = 435.0
+offset_bottom = 25.0
+text = "High Score:"
+
+[node name="HighScore" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 413.0
+offset_top = 2.0
+offset_right = 513.0
+offset_bottom = 27.0
+text = "0"
+
+[connection signal="body_entered" from="Bird" to="Bird" method="OnBodyEntered"]
