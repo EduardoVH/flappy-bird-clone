@@ -55,6 +55,8 @@ public partial class Bird : RigidBody2D
 		movementThisFrame.Y = LinearVelocity.Y;
 
 		LinearVelocity = movementThisFrame;
+		
+		
 	}
 
 	public override void _Input(InputEvent @event)

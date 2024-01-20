@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf2xn8h0g7kri"
-path="res://.godot/imported/bg.png-23a59c2e9cba2223a50fa3fe41b70b25.ctex"
+uid="uid://ckdm3a55d3rj0"
+path="res://.godot/imported/thin-cloud.png-51210d69409ed9ee9ab1b3115e5e7a68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bg.png"
-dest_files=["res://.godot/imported/bg.png-23a59c2e9cba2223a50fa3fe41b70b25.ctex"]
+source_file="res://assets/thin-cloud.png"
+dest_files=["res://.godot/imported/thin-cloud.png-51210d69409ed9ee9ab1b3115e5e7a68.ctex"]
 
 [params]
 

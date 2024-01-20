@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://0si17mvdt464"]
+[gd_scene load_steps=26 format=3 uid="uid://0si17mvdt464"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.cs" id="1_2ow03"]
-[ext_resource type="Texture2D" uid="uid://ceuk2kb8gexbp" path="res://assets/bg2.png" id="1_53loj"]
+[ext_resource type="Texture2D" uid="uid://dkoieddkd6yl" path="res://assets/bg2.png" id="1_53loj"]
 [ext_resource type="Script" path="res://scripts/Bird.cs" id="1_v4kr7"]
 [ext_resource type="Texture2D" uid="uid://bd15e7084watt" path="res://assets/fireBird1.png" id="2_1gii3"]
 [ext_resource type="PackedScene" uid="uid://kys51vpf3yus" path="res://Barrier.tscn" id="2_ntnfw"]
@@ -10,9 +10,18 @@
 [ext_resource type="Texture2D" uid="uid://db10hw2d4c4qk" path="res://assets/fireBird2.png" id="3_sb0dt"]
 [ext_resource type="Texture2D" uid="uid://cc46itganiuce" path="res://assets/fireBirdDeath.png" id="4_flk75"]
 [ext_resource type="Texture2D" uid="uid://c8hn0dtrdn0ym" path="res://assets/fireBird3.png" id="4_wjprm"]
+[ext_resource type="Texture2D" uid="uid://bdrnit511xidn" path="res://assets/mountain.png" id="5_7havc"]
+[ext_resource type="Texture2D" uid="uid://cq8k6y6jur37p" path="res://assets/dark-sky.png" id="5_k05mf"]
 [ext_resource type="AudioStream" uid="uid://dnpgtvq8uml1" path="res://sounds/sfx_wing.wav" id="6_fhdr6"]
+[ext_resource type="Texture2D" uid="uid://ct5ksg1dg3s61" path="res://assets/light-sky.png" id="6_xp0xl"]
 [ext_resource type="AudioStream" uid="uid://8fy1yumfnsst" path="res://sounds/sfx_point.wav" id="7_mm5qd"]
+[ext_resource type="Texture2D" uid="uid://08ocymxn71h8" path="res://assets/dark-blue-sky.png" id="7_xtdir"]
 [ext_resource type="AudioStream" uid="uid://c4esddn8etbrs" path="res://sounds/sfx_hit.wav" id="8_ctel8"]
+[ext_resource type="Texture2D" uid="uid://o6l38gj7jnkv" path="res://assets/small-cloud.png" id="8_ncw7m"]
+[ext_resource type="Texture2D" uid="uid://bgv0p3akgfhvw" path="res://assets/blue-cloud.png" id="8_nwcgg"]
+[ext_resource type="Texture2D" uid="uid://be43gal8iqunh" path="res://assets/moon.png" id="8_vwkpc"]
+[ext_resource type="Texture2D" uid="uid://ckdm3a55d3rj0" path="res://assets/thin-cloud.png" id="9_0ntse"]
+[ext_resource type="Texture2D" uid="uid://d4133llmlaa1" path="res://assets/wide-cloud.png" id="11_ynrqj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q0mi6"]
 animations = [{
@@ -60,24 +69,116 @@ highScoreLabel = NodePath("../CanvasLayer/HighScore")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(48, -40)
 motion_scale = Vector2(0.1, 1)
-motion_mirroring = Vector2(985, 0)
+motion_mirroring = Vector2(1050, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
 texture_filter = 1
-position = Vector2(492.809, 432.208)
-scale = Vector2(1.23369, 1.23369)
+position = Vector2(528.119, 460.104)
+scale = Vector2(1.31399, 1.31399)
 texture = ExtResource("1_53loj")
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Ground" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(1229, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Ground"]
 texture_filter = 1
 position = Vector2(536, 784)
 scale = Vector2(0.711309, 0.711309)
 texture = ExtResource("2_vsbdg")
+
+[node name="DarkSky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.05, 1)
+motion_mirroring = Vector2(1980, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/DarkSky"]
+texture_filter = 1
+position = Vector2(992, 360)
+scale = Vector2(1.24, 1.875)
+texture = ExtResource("5_k05mf")
+
+[node name="LightSky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.08, 1)
+motion_mirroring = Vector2(1969, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/LightSky"]
+texture_filter = 1
+position = Vector2(1060, 404)
+scale = Vector2(1.345, 1.03448)
+texture = ExtResource("6_xp0xl")
+
+[node name="DarkBlueSky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.04, 1)
+motion_mirroring = Vector2(1050, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/DarkBlueSky"]
+texture_filter = 1
+position = Vector2(552, 7.75)
+scale = Vector2(1.38, 1.41912)
+texture = ExtResource("7_xtdir")
+
+[node name="BlueCloud" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.05, 1)
+motion_mirroring = Vector2(2500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BlueCloud"]
+texture_filter = 1
+position = Vector2(296, 27)
+scale = Vector2(1.05, 1.05)
+texture = ExtResource("8_nwcgg")
+
+[node name="Moon" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.06, 1)
+motion_mirroring = Vector2(3000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Moon"]
+texture_filter = 1
+position = Vector2(704, 144)
+rotation = 1.309
+scale = Vector2(2.00408, 2.00408)
+texture = ExtResource("8_vwkpc")
+
+[node name="SmallCloud" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.09, 1)
+motion_mirroring = Vector2(1100, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/SmallCloud"]
+texture_filter = 1
+position = Vector2(1488, 184)
+scale = Vector2(2.1, 2.1)
+texture = ExtResource("8_ncw7m")
+
+[node name="ThinCloud" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.095, 1)
+motion_mirroring = Vector2(1300, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ThinCloud"]
+texture_filter = 1
+position = Vector2(544, 120)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("9_0ntse")
+
+[node name="Mountain" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(3000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mountain"]
+texture_filter = 1
+position = Vector2(992, 336)
+scale = Vector2(1.54819, 1.54819)
+texture = ExtResource("5_7havc")
+
+[node name="WideCloud" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.15, 1)
+motion_mirroring = Vector2(1250, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/WideCloud"]
+texture_filter = 1
+position = Vector2(104, 272)
+scale = Vector2(3.83333, 3.83333)
+texture = ExtResource("11_ynrqj")
 
 [node name="Bird" type="RigidBody2D" parent="."]
 position = Vector2(339, 400)
@@ -97,9 +198,12 @@ texture_filter = 1
 scale = Vector2(0.833333, 0.833333)
 sprite_frames = SubResource("SpriteFrames_q0mi6")
 animation = &"fly"
+frame = 2
+frame_progress = 0.0613119
 speed_scale = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bird"]
+visible = false
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_afhrm")
 
