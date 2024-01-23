@@ -1,15 +1,15 @@
 [gd_scene load_steps=26 format=3 uid="uid://0si17mvdt464"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.cs" id="1_2ow03"]
-[ext_resource type="Texture2D" uid="uid://dkoieddkd6yl" path="res://assets/bg2.png" id="1_53loj"]
 [ext_resource type="Script" path="res://scripts/Bird.cs" id="1_v4kr7"]
-[ext_resource type="Texture2D" uid="uid://bd15e7084watt" path="res://assets/fireBird1.png" id="2_1gii3"]
+[ext_resource type="Texture2D" uid="uid://cdc27yil54pt5" path="res://assets/fire-bird1.png" id="2_1gii3"]
 [ext_resource type="PackedScene" uid="uid://kys51vpf3yus" path="res://Barrier.tscn" id="2_ntnfw"]
 [ext_resource type="Texture2D" uid="uid://br7qwv7nuctgr" path="res://assets/ground.png" id="2_vsbdg"]
 [ext_resource type="Script" path="res://scripts/Ground.cs" id="3_jfumu"]
-[ext_resource type="Texture2D" uid="uid://db10hw2d4c4qk" path="res://assets/fireBird2.png" id="3_sb0dt"]
-[ext_resource type="Texture2D" uid="uid://cc46itganiuce" path="res://assets/fireBirdDeath.png" id="4_flk75"]
-[ext_resource type="Texture2D" uid="uid://c8hn0dtrdn0ym" path="res://assets/fireBird3.png" id="4_wjprm"]
+[ext_resource type="Texture2D" uid="uid://d1ixkp14qmihx" path="res://assets/bg-2.png" id="3_mcbue"]
+[ext_resource type="Texture2D" uid="uid://bk3hvo6iiyys4" path="res://assets/fire-bird2.png" id="3_sb0dt"]
+[ext_resource type="Texture2D" uid="uid://ciamnekuqfuor" path="res://assets/fire-bird-death.png" id="4_flk75"]
+[ext_resource type="Texture2D" uid="uid://dj620n8cfnq5t" path="res://assets/fire-bird3.png" id="4_wjprm"]
 [ext_resource type="Texture2D" uid="uid://bdrnit511xidn" path="res://assets/mountain.png" id="5_7havc"]
 [ext_resource type="Texture2D" uid="uid://cq8k6y6jur37p" path="res://assets/dark-sky.png" id="5_k05mf"]
 [ext_resource type="AudioStream" uid="uid://dnpgtvq8uml1" path="res://sounds/sfx_wing.wav" id="6_fhdr6"]
@@ -72,21 +72,21 @@ highScoreLabel = NodePath("../CanvasLayer/HighScore")
 [node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(48, -40)
 motion_scale = Vector2(0.1, 1)
-motion_mirroring = Vector2(1050, 0)
+motion_mirroring = Vector2(863, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
 texture_filter = 1
-position = Vector2(528.119, 460.104)
-scale = Vector2(1.31399, 1.31399)
-texture = ExtResource("1_53loj")
+position = Vector2(383.791, 439.603)
+scale = Vector2(0.228227, 0.228227)
+texture = ExtResource("3_mcbue")
 
 [node name="Ground" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1229, 0)
+motion_mirroring = Vector2(868, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Ground"]
 texture_filter = 1
-position = Vector2(536, 784)
-scale = Vector2(0.711309, 0.711309)
+position = Vector2(433.933, 736.878)
+scale = Vector2(0.573836, 0.573836)
 texture = ExtResource("2_vsbdg")
 
 [node name="DarkSky" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -95,7 +95,7 @@ motion_mirroring = Vector2(1980, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/DarkSky"]
 texture_filter = 1
-position = Vector2(992, 360)
+position = Vector2(992, 357)
 scale = Vector2(1.24, 1.875)
 texture = ExtResource("5_k05mf")
 
@@ -105,8 +105,8 @@ motion_mirroring = Vector2(1969, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/LightSky"]
 texture_filter = 1
-position = Vector2(1060, 404)
-scale = Vector2(1.345, 1.03448)
+position = Vector2(867.5, 380)
+scale = Vector2(1.28437, 0.844826)
 texture = ExtResource("6_xp0xl")
 
 [node name="DarkBlueSky" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -115,7 +115,7 @@ motion_mirroring = Vector2(1050, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/DarkBlueSky"]
 texture_filter = 1
-position = Vector2(552, 7.75)
+position = Vector2(552, 47.75)
 scale = Vector2(1.38, 1.41912)
 texture = ExtResource("7_xtdir")
 
@@ -166,7 +166,7 @@ motion_mirroring = Vector2(3000, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mountain"]
 texture_filter = 1
-position = Vector2(992, 336)
+position = Vector2(882, 301)
 scale = Vector2(1.54819, 1.54819)
 texture = ExtResource("5_7havc")
 

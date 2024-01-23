@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://kys51vpf3yus"]
 
 [ext_resource type="Script" path="res://scripts/Barrier.cs" id="1_0oue8"]
-[ext_resource type="Texture2D" uid="uid://br75omfujruff" path="res://assets/pipe.png" id="2_q2yep"]
+[ext_resource type="Texture2D" uid="uid://dcj3554ieltqa" path="res://assets/log.png" id="2_vy238"]
 [ext_resource type="Script" path="res://scripts/PointScore.cs" id="3_0kk0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bllgk"]
-size = Vector2(40, 561)
+size = Vector2(68, 562)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhrtl"]
 size = Vector2(3, 147)
@@ -19,14 +19,17 @@ rotation = 3.14159
 
 [node name="NinePatchRect" type="NinePatchRect" parent="StaticBody2D2"]
 texture_filter = 1
-offset_right = 40.0
+offset_left = -28.0
+offset_top = -6.10352e-05
+offset_right = 42.0
 offset_bottom = 560.0
-texture = ExtResource("2_q2yep")
-region_rect = Rect2(0, 0, 78, 560)
+texture = ExtResource("2_vy238")
+region_rect = Rect2(1.5665, -0.0240307, 124.916, 1294.25)
 axis_stretch_vertical = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(20, 280.5)
+position = Vector2(6, 280.5)
 shape = SubResource("RectangleShape2D_bllgk")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -34,14 +37,15 @@ position = Vector2(0, 24)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="StaticBody2D"]
 texture_filter = 1
-offset_right = 40.0
+offset_right = 70.0
 offset_bottom = 559.0
-texture = ExtResource("2_q2yep")
-region_rect = Rect2(0, 0, 78, 560)
+texture = ExtResource("2_vy238")
+region_rect = Rect2(1.96411, 0, 124.425, 1294.16)
 axis_stretch_vertical = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(20, 282.5)
+position = Vector2(34, 282)
 shape = SubResource("RectangleShape2D_bllgk")
 
 [node name="Area2D" type="Area2D" parent="."]
